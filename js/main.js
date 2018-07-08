@@ -1,7 +1,7 @@
 function getCoordinates(cb) {
   navigator.geolocation.getCurrentPosition((position) => {
     cb(position.coords);
-  });
+  }, showErrorMassage());
 }
 
 function requestWeather (coords, cb){
@@ -29,11 +29,16 @@ function showWeather(response){
   var wind = response.wind.speed + ' m/s';
   var pressure = response.main.pressure + ' Cp';
 
+  document.querySelector('#noGeolocation').hidden = true;
   document.querySelector('#icon').setAttribute('src', 'http://openweathermap.org/img/w/' + iconId + '.png');
   document.querySelector('#location').innerHTML = location;
   document.querySelector('#temp').innerHTML = temp;
   document.querySelector('#wind').innerHTML = wind;
   document.querySelector('#pressure').innerHTML = pressure;
+}
+
+function showErrorMassage (){
+  document.querySelector('#noGeolocation').hidden = false;
 }
 
 getCoordinates((coords) => {
