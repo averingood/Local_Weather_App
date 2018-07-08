@@ -1,0 +1,14 @@
+body {
+  background-color: #e3ecfc;
+  font-size: 18px;
+  font-family: sans-serif;
+}
+
+span {
+  font-weight: bold;
+}
+
+.error {
+  font-size: 16px;
+  color: red;
+}
